@@ -122,18 +122,33 @@ export default function Home() {
       </section>
 
       {/* Backed By Section */}
-      <section className="py-16 bg-[#0c0e11]">
+      <section className="py-16 bg-[#0c0e11] border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-sm text-gray-500 uppercase tracking-wider mb-8">BACKED BY:</p>
-          <div className="flex flex-wrap items-center gap-12 opacity-60">
-            <div className="text-2xl font-light tracking-wider">manifold</div>
-            <div className="text-xl font-light">MIRANA</div>
-            <div className="text-xl font-light">METALAYER<br/>VENTURES</div>
+          <div className="relative overflow-hidden">
+            <div className="flex items-center gap-16 animate-scroll">
+              <div className="text-2xl font-light tracking-wider whitespace-nowrap">anthos</div>
+              <div className="text-2xl font-light tracking-wider whitespace-nowrap">HACK VC</div>
+              <div className="text-xl font-light whitespace-nowrap">MIRANA</div>
+              <div className="text-2xl font-light tracking-wider whitespace-nowrap">manifold</div>
+              <div className="text-xl font-light whitespace-nowrap">METALAYER VENTURES</div>
+              <div className="text-xl font-light whitespace-nowrap">SCB</div>
+              <div className="text-xl font-light whitespace-nowrap">Selini</div>
+              <div className="text-xl font-light whitespace-nowrap">Amber</div>
+              <div className="text-xl font-light whitespace-nowrap">MEXC</div>
+              <div className="text-xl font-light whitespace-nowrap">Flowdesk</div>
+              {/* Duplicate for seamless loop */}
+              <div className="text-2xl font-light tracking-wider whitespace-nowrap">anthos</div>
+              <div className="text-2xl font-light tracking-wider whitespace-nowrap">HACK VC</div>
+              <div className="text-xl font-light whitespace-nowrap">MIRANA</div>
+              <div className="text-2xl font-light tracking-wider whitespace-nowrap">manifold</div>
+              <div className="text-xl font-light whitespace-nowrap">METALAYER VENTURES</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Tokenization Infrastructure */}
+      {/* What is Theo Section */}
       <section className="py-24 bg-[#0c0e11]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-8">
@@ -145,41 +160,40 @@ export default function Home() {
             Tokenization infrastructure that goes<br />
             beyond issuance
           </h2>
-          <p className="text-xl text-gray-400 mb-8">
+          <p className="text-xl text-gray-400 mb-16">
             Successful real world assets can't stop at issuance.<br />
             Theo helps issuers and allocators realize their potential.
           </p>
-        </div>
-      </section>
 
-      {/* Complete Ecosystems Section */}
-      <section className="py-24 bg-[#0c0e11]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h3 className="text-4xl font-light mb-6">
-                Complete ecosystems for<br />
-                tokenized assets
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                Tap into onchain markets with an institutional-grade tokenization stack that goes beyond issuance. Theo powers financial products with built-in distribution, liquidity, and interoperability.
-              </p>
-            </div>
-            <div className="relative h-96 flex items-center justify-center">
-              <div className="absolute w-96 h-96 rounded-full border-2 border-[#449fa5]/30" />
-              <div className="absolute w-80 h-80 rounded-full border-2 border-[#449fa5]/40" />
-              <div className="absolute w-64 h-64 rounded-full border-2 border-[#449fa5]/50" />
-              <div className="absolute w-48 h-48 rounded-full border-2 border-[#449fa5]/60" />
-              <div className="absolute w-32 h-32 rounded-full bg-[#449fa5]/20 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" stroke="#1a2332" strokeWidth="2"/>
-                    <path d="M8 8l8 8M16 8l-8 8" stroke="#1a2332" strokeWidth="2"/>
-                  </svg>
+          {/* Cards Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Card 1 - For Issuers */}
+            <div className="bg-gradient-to-br from-[#1a3a3a] to-[#0f2a2a] rounded-3xl p-8 relative overflow-hidden">
+              <div className="relative z-10">
+                <div className="inline-block px-3 py-1 bg-[#449fa5]/20 rounded-full mb-6">
+                  <span className="text-sm text-[#449fa5]">For Issuers</span>
                 </div>
+                <h3 className="text-3xl font-light mb-4">
+                  Complete ecosystems for<br />
+                  tokenized assets
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Tap into onchain markets with an institutional-grade tokenization stack that goes beyond issuance. Theo powers financial products with built-in distribution, liquidity, and interoperability.
+                </p>
               </div>
-              <div className="absolute top-16 right-16 w-4 h-4 rounded-full bg-[#449fa5]" />
-              <div className="absolute bottom-20 left-20 w-3 h-3 rounded-full bg-[#449fa5]" />
+              <div className="absolute right-0 bottom-0 w-64 h-64 opacity-20">
+                <div className="absolute w-full h-full rounded-full border-2 border-[#449fa5]/30" />
+                <div className="absolute inset-8 rounded-full border-2 border-[#449fa5]/40" />
+                <div className="absolute inset-16 rounded-full border-2 border-[#449fa5]/50" />
+              </div>
+            </div>
+
+            {/* Card 2 - Placeholder */}
+            <div className="bg-[#1a2a3a] rounded-3xl p-8 flex items-center justify-center min-h-[300px]">
+              <div className="text-center text-gray-600">
+                <div className="text-4xl mb-2">•••</div>
+                <p className="text-sm">More features coming soon</p>
+              </div>
             </div>
           </div>
         </div>
@@ -439,6 +453,16 @@ export default function Home() {
         @keyframes pulse {
           0%, 100% { opacity: 0.3; transform: scale(1); }
           50% { opacity: 1; transform: scale(1.2); }
+        }
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
         }
       `}</style>
     </div>
