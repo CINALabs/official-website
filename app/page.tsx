@@ -374,28 +374,33 @@ export default function Home() {
       </section>
 
       {/* Announcement Card */}
-      <section className="py-24 bg-[#0c0e11]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-br from-[#0d2d2d] via-[#0a2525] to-[#082020] rounded-3xl p-16 relative overflow-hidden min-h-[500px] flex items-center">
-            {/* 右侧图片 - announce1.avif */}
-            <div className="absolute right-8 top-1/2 -translate-y-1/2 w-[450px] h-[450px]">
-              <img 
-                src="/announce1.avif" 
-                alt="thBILL is LIVE"
-                className="w-full h-full object-contain"
-              />
+      <section className="py-12 bg-[#0c0e11]">
+        <div className="max-w-[1024px] mx-auto px-6">
+          <div className="bg-gradient-to-br from-[#0d3838] via-[#0a2a2a] to-[#082222] rounded-[24px] p-10 md:p-14 relative overflow-hidden min-h-[320px] flex items-center">
+            {/* 右侧图片 - 使用announce1.avif，但需要显示为圆形logo */}
+            <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
+              <div className="relative w-full h-full">
+                {/* 背景渐变装饰 */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#2a6565] to-[#1a4545] rounded-full opacity-40 blur-2xl"></div>
+                {/* Logo图片 */}
+                <img 
+                  src="/announce1.avif" 
+                  alt="Theo Logo"
+                  className="relative w-full h-full object-contain"
+                />
+              </div>
             </div>
 
             {/* 左侧内容 */}
-            <div className="relative z-10 max-w-xl">
-              <h2 className="text-5xl md:text-6xl font-light mb-6 leading-tight">
+            <div className="relative z-10 max-w-[480px]">
+              <h2 className="text-4xl md:text-[44px] font-light mb-5 leading-[1.2] text-white">
                 Announcing our<br />
                 $20M Raise
               </h2>
-              <p className="text-gray-300 mb-8 leading-relaxed text-lg">
+              <p className="text-gray-300 mb-7 leading-relaxed text-[15px] md:text-base">
                 We've raised $20m led by Hack VC and Anthos Capital, with participation from Manifold Trading, Mirana Ventures, Metalayer Ventures, MEXC, SCB, Amber Group, and Selini Capital.
               </p>
-              <button className="px-8 py-3 border-2 border-white/80 rounded-full text-white hover:bg-white hover:text-[#0a2525] transition-all font-light">
+              <button className="px-7 py-2.5 border border-white/70 rounded-full text-white text-sm hover:bg-white/10 transition-all font-normal backdrop-blur-sm">
                 Read more
               </button>
             </div>
@@ -404,54 +409,66 @@ export default function Home() {
       </section>
 
       {/* Blog Posts */}
-      <section className="py-24 bg-[#0c0e11]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-6">
+      <section className="py-12 bg-[#0c0e11]">
+        <div className="max-w-[1024px] mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-5">
             {/* Card 1 */}
-            <div className="bg-[#0d1a1a] rounded-3xl overflow-hidden hover:bg-[#0f1f1f] transition-colors cursor-pointer group">
-              <div className="aspect-video relative overflow-hidden">
+            <a href="#" className="block bg-transparent rounded-[20px] overflow-hidden hover:opacity-90 transition-opacity cursor-pointer group">
+              <div className="aspect-video relative overflow-hidden rounded-[20px]">
                 <img 
                   src="/announce2.avif" 
-                  alt="Theo Logo"
+                  alt="thBILL is LIVE"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-8">
-                <span className="text-xs text-[#86b8b8] uppercase tracking-wider font-medium">Announcements</span>
-                <h3 className="text-2xl font-light mt-3 mb-4 group-hover:text-[#86b8b8] transition-colors">
+              <div className="pt-5 pb-2">
+                <div className="inline-block px-3 py-1.5 bg-[#003a40] rounded-md mb-3">
+                  <span className="text-[11px] text-[#86d8e0] uppercase tracking-wider font-medium">Announcements</span>
+                </div>
+                <h3 className="text-[22px] md:text-2xl font-normal mb-3 text-white leading-tight">
                   Theo 推出机构级代币化货币市场基金 thBILL
                 </h3>
-                <p className="text-sm text-gray-500 uppercase tracking-wide">JUL 24, 2025 · 3 MINUTES</p>
+                <div className="flex items-center gap-2 text-[11px] text-gray-600 uppercase tracking-wide">
+                  <span>JUL 24, 2025</span>
+                  <span>·</span>
+                  <span>3 MINUTES</span>
+                </div>
               </div>
-            </div>
+            </a>
 
             {/* Card 2 */}
-            <div className="bg-[#0d1a1a] rounded-3xl overflow-hidden hover:bg-[#0f1f1f] transition-colors cursor-pointer group">
-              <div className="aspect-video relative overflow-hidden">
+            <a href="#" className="block bg-transparent rounded-[20px] overflow-hidden hover:opacity-90 transition-opacity cursor-pointer group">
+              <div className="aspect-video relative overflow-hidden rounded-[20px]">
                 <img 
                   src="/announce2.avif" 
-                  alt="Theo Logo"
+                  alt="thBILL is LIVE"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-8">
-                <span className="text-xs text-[#86b8b8] uppercase tracking-wider font-medium">Announcements</span>
-                <h3 className="text-2xl font-light mt-3 mb-4 group-hover:text-[#86b8b8] transition-colors">
+              <div className="pt-5 pb-2">
+                <div className="inline-block px-3 py-1.5 bg-[#003a40] rounded-md mb-3">
+                  <span className="text-[11px] text-[#86d8e0] uppercase tracking-wider font-medium">Announcements</span>
+                </div>
+                <h3 className="text-[22px] md:text-2xl font-normal mb-3 text-white leading-tight">
                   thBILL is Live: Theo's Institutional-Grade Tokenize...
                 </h3>
-                <p className="text-sm text-gray-500 uppercase tracking-wide">JUL 24, 2025 · 3 MINUTES</p>
+                <div className="flex items-center gap-2 text-[11px] text-gray-600 uppercase tracking-wide">
+                  <span>JUL 24, 2025</span>
+                  <span>·</span>
+                  <span>3 MINUTES</span>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Stay Up To Date */}
-      <section className="py-16 bg-[#0c0e11]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-r from-[#1a4545] via-[#1d4a4a] to-[#205050] rounded-3xl p-10 flex items-center justify-between shadow-xl">
-            <h3 className="text-4xl font-light">Stay up to date</h3>
-            <button className="px-10 py-4 bg-white text-[#0d2525] rounded-full font-light text-lg hover:bg-gray-100 transition-all hover:scale-105">
+      <section className="py-12 bg-[#0c0e11]">
+        <div className="max-w-[1024px] mx-auto px-6">
+          <div className="bg-gradient-to-r from-[#1a6565] via-[#1d6868] to-[#207070] rounded-[24px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <h3 className="text-3xl md:text-[40px] font-light text-white leading-tight">Stay up to date</h3>
+            <button className="px-8 py-3 bg-white text-black rounded-full font-normal text-[15px] hover:bg-gray-100 transition-all whitespace-nowrap">
               Follow Us On X
             </button>
           </div>
