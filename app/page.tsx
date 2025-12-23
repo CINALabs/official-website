@@ -9,10 +9,12 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [showAboutDropdown, setShowAboutDropdown] = useState(false);
   const [showLearnDropdown, setShowLearnDropdown] = useState(false);
+  const [showProductsDropdown, setShowProductsDropdown] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<any>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const learnDropdownRef = useRef<HTMLDivElement>(null);
+  const productsDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -26,6 +28,9 @@ export default function Home() {
       }
       if (learnDropdownRef.current && !learnDropdownRef.current.contains(event.target as Node)) {
         setShowLearnDropdown(false);
+      }
+      if (productsDropdownRef.current && !productsDropdownRef.current.contains(event.target as Node)) {
+        setShowProductsDropdown(false);
       }
     };
 
@@ -126,7 +131,7 @@ export default function Home() {
                 {/* Dropdown Menu */}
                 {showAboutDropdown && (
                   <div 
-                    className="absolute top-full left-0 mt-2 bg-black/80 backdrop-blur-[10px] border border-white/10 rounded-[10px] shadow-[0px_0.602187px_0.602187px_-1.25px_rgba(0,0,0,0.04),0px_2.28853px_2.28853px_-2.5px_rgba(0,0,0,0.03),0px_10px_10px_-3.75px_rgba(0,0,0,0.01)] p-2 flex flex-col gap-0.5 min-w-[320px]"
+                    className="absolute top-full left-0 mt-2 bg-[#0a0a0a]/95 backdrop-blur-[10px] border border-white/10 rounded-[10px] shadow-[0px_0.602187px_0.602187px_-1.25px_rgba(0,0,0,0.04),0px_2.28853px_2.28853px_-2.5px_rgba(0,0,0,0.03),0px_10px_10px_-3.75px_rgba(0,0,0,0.01)] p-2 flex flex-col gap-0.5 min-w-[320px]"
                     onMouseEnter={() => setShowAboutDropdown(true)}
                   >
                     {/* Contact Us */}
@@ -201,7 +206,7 @@ export default function Home() {
                 {/* Learn Dropdown Menu */}
                 {showLearnDropdown && (
                   <div 
-                    className="absolute top-full left-0 mt-2 bg-black/80 backdrop-blur-[10px] border border-white/10 rounded-[10px] shadow-[0px_10px_20px_0px_rgba(0,0,0,0.05)] p-2 flex flex-col gap-0.5 min-w-[320px]"
+                    className="absolute top-full left-0 mt-2 bg-[#0a0a0a]/95 backdrop-blur-[10px] border border-white/10 rounded-[10px] shadow-[0px_10px_20px_0px_rgba(0,0,0,0.05)] p-2 flex flex-col gap-0.5 min-w-[320px]"
                     onMouseEnter={() => setShowLearnDropdown(true)}
                   >
                     {/* Blog */}
@@ -249,7 +254,39 @@ export default function Home() {
                   </div>
                 )}
               </div>
-              <a href="#" className="px-4 py-2 text-sm text-white hover:text-gray-300 transition-colors opacity-95 rounded-full">Products</a>
+              <div 
+                className="relative" 
+                ref={productsDropdownRef}
+                onMouseLeave={() => setShowProductsDropdown(false)}
+              >
+                <button 
+                  onMouseEnter={() => setShowProductsDropdown(true)}
+                  className="px-4 py-2 text-sm text-white hover:text-gray-300 transition-colors opacity-95 rounded-full"
+                >
+                  Products
+                </button>
+                
+                {/* Products Dropdown Menu */}
+                {showProductsDropdown && (
+                  <div 
+                    className="absolute top-full left-0 mt-2 bg-[#0a0a0a]/95 backdrop-blur-[10px] border border-white/10 rounded-[10px] shadow-[0px_0.602187px_0.602187px_-1.25px_rgba(0,0,0,0.04),0px_2.28853px_2.28853px_-2.5px_rgba(0,0,0,0.03),0px_10px_10px_-3.75px_rgba(0,0,0,0.01)] p-2 flex flex-col gap-0.5 min-w-[320px]"
+                    onMouseEnter={() => setShowProductsDropdown(true)}
+                  >
+                    {/* thBILL */}
+                    <a href="#" className="flex items-start gap-3 p-3 hover:bg-white/5 rounded-[10px] transition-colors">
+                      <div className="w-10 h-10 bg-[#c41d54]/20 rounded-md flex items-center justify-center flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 22 27" fill="none" className="text-black">
+                          <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontSize="16" fontWeight="bold" fill="currentColor">₮</text>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm font-normal mb-0.5">thBILL</p>
+                        <p className="text-[#8a8a8a] text-xs leading-relaxed">Theo Short Duration US Treasury Fund</p>
+                      </div>
+                    </a>
+                  </div>
+                )}
+              </div>
               <button className="px-6 py-2.5 bg-white text-black rounded-full text-sm font-normal hover:bg-gray-100 transition-colors backdrop-blur-[10px] ml-2">
                 Launch app
               </button>
