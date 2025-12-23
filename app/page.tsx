@@ -7,11 +7,25 @@ import LottieCard from "./components/LottieCard";
 export default function Home() {
   const [showNotification, setShowNotification] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showAboutDropdown, setShowAboutDropdown] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<any>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowAboutDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   // Lottie动画加载
@@ -92,7 +106,78 @@ export default function Home() {
               <span className="text-xl font-light text-white">theo</span>
             </div>
             <div className="flex items-center gap-2">
-              <a href="#" className="px-4 py-2 text-sm text-white hover:text-gray-300 transition-colors opacity-95 rounded-full">About</a>
+              <div className="relative" ref={dropdownRef}>
+                <button 
+                  onMouseEnter={() => setShowAboutDropdown(true)}
+                  className="px-4 py-2 text-sm text-white hover:text-gray-300 transition-colors opacity-95 rounded-full"
+                >
+                  About
+                </button>
+                
+                {/* Dropdown Menu */}
+                {showAboutDropdown && (
+                  <div 
+                    className="absolute top-full left-0 mt-2 bg-black/30 backdrop-blur-[10px] border border-white/10 rounded-[10px] shadow-[0px_0.602187px_0.602187px_-1.25px_rgba(0,0,0,0.04),0px_2.28853px_2.28853px_-2.5px_rgba(0,0,0,0.03),0px_10px_10px_-3.75px_rgba(0,0,0,0.01)] p-2 flex flex-col gap-0.5 min-w-[320px]"
+                    onMouseEnter={() => setShowAboutDropdown(true)}
+                    onMouseLeave={() => setShowAboutDropdown(false)}
+                  >
+                    {/* Contact Us */}
+                    <a href="#" className="flex items-start gap-3 p-3 hover:bg-white/5 rounded-[10px] transition-colors">
+                      <div className="w-10 h-10 bg-[#007f8e]/20 rounded-md flex items-center justify-center flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#007f8e]">
+                          <rect x="2" y="4" width="20" height="16" rx="2"/>
+                          <path d="m2 7 10 6 10-6"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm font-normal mb-0.5">Contact Us</p>
+                        <p className="text-white/70 text-xs leading-relaxed">Reach out with a question, idea, or request.</p>
+                      </div>
+                    </a>
+
+                    {/* Brand Kit */}
+                    <a href="#" className="flex items-start gap-3 p-3 hover:bg-white/5 rounded-[10px] transition-colors">
+                      <div className="w-10 h-10 bg-[#007f8e]/20 rounded-md flex items-center justify-center flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#007f8e]">
+                          <rect x="9" y="9" width="13" height="13" rx="2"/>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm font-normal mb-0.5">Brand Kit</p>
+                        <p className="text-white/70 text-xs leading-relaxed">Access our marks, brand guidelines, and approved assets.</p>
+                      </div>
+                    </a>
+
+                    {/* Socials */}
+                    <a href="#" className="flex items-start gap-3 p-3 hover:bg-white/5 rounded-[10px] transition-colors">
+                      <div className="w-10 h-10 bg-[#007f8e]/20 rounded-md flex items-center justify-center flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#007f8e]">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm font-normal mb-0.5">Socials</p>
+                        <p className="text-white/70 text-xs leading-relaxed">Be the first to get Theo news on X and LinkedIn, and connect with the community on Discord.</p>
+                      </div>
+                    </a>
+
+                    {/* Careers (Coming Soon) */}
+                    <a href="#" className="flex items-start gap-3 p-3 hover:bg-white/5 rounded-[10px] transition-colors opacity-50">
+                      <div className="w-10 h-10 bg-[#007f8e]/20 rounded-md flex items-center justify-center flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#007f8e]">
+                          <rect x="2" y="7" width="20" height="14" rx="2"/>
+                          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-white text-sm font-normal mb-0.5">Careers (Coming Soon)</p>
+                        <p className="text-white/70 text-xs leading-relaxed">Join Theo and help us reimagine global financial markets.</p>
+                      </div>
+                    </a>
+                  </div>
+                )}
+              </div>
               <a href="#" className="px-4 py-2 text-sm text-white hover:text-gray-300 transition-colors opacity-95 rounded-full">Learn</a>
               <a href="#" className="px-4 py-2 text-sm text-white hover:text-gray-300 transition-colors opacity-95 rounded-full">Products</a>
               <button className="px-6 py-2.5 bg-white text-black rounded-full text-sm font-normal hover:bg-gray-100 transition-colors backdrop-blur-[10px] ml-2">
