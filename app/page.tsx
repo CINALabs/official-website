@@ -175,38 +175,56 @@ export default function Home() {
       {/* thBILL Section */}
       <section className="py-24 bg-[#0c0e11]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-5xl font-light mb-6">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-16 max-w-4xl mx-auto">
+            {/* 左侧内容 */}
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-5xl md:text-6xl font-light mb-6 leading-tight">
                 The safest way to<br />
                 earn onchain
               </h2>
-              <p className="text-gray-400 mb-8 leading-relaxed">
+              <p className="text-gray-400 mb-8 leading-relaxed max-w-lg">
                 thBILL is a tokenized T-bill vehicle developed in collaboration with leading financial institutions and the safest way to access Treasury yield onchain.
               </p>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">BEST IN CLASS PARTNERS</p>
-              <div className="flex gap-8 opacity-60">
-                <div className="text-sm">Standard Chartered</div>
-                <div className="text-sm">Wellington Management</div>
-                <div className="text-sm">Fundbridge</div>
+              <div className="mb-6">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">BEST IN CLASS PARTNERS</p>
+                <div className="flex flex-wrap justify-center md:justify-start gap-6 opacity-60">
+                  <div className="text-sm">Standard Chartered</div>
+                  <div className="text-sm">Wellington Management</div>
+                  <div className="text-sm">Fundbridge</div>
+                </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-[#c8d8d8] to-[#88b8c8] rounded-2xl p-8 aspect-square flex flex-col items-center justify-center">
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-[#1a2332] flex items-center justify-center">
-                    <span className="text-2xl text-white">₮</span>
+
+            {/* 右侧卡片 */}
+            <div className="flex-shrink-0">
+              <div className="bg-gradient-to-br from-[#c8d8d8] to-[#88b8c8] rounded-3xl p-8 w-80 h-80 flex flex-col items-center justify-center relative overflow-hidden">
+                {/* 背景装饰 */}
+                <div className="absolute top-4 right-4 w-16 h-16 rounded-full border-2 border-[#1a2332]/20"></div>
+                <div className="absolute bottom-4 left-4 w-8 h-8 rounded-full bg-[#1a2332]/10"></div>
+                
+                <div className="text-center relative z-10">
+                  {/* Logo和标题 */}
+                  <div className="flex items-center justify-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-full bg-[#1a2332] flex items-center justify-center">
+                      <span className="text-2xl text-white font-bold">₮</span>
+                    </div>
+                    <span className="text-3xl font-light text-[#1a2332]">thBILL</span>
                   </div>
-                  <span className="text-3xl font-light text-[#1a2332]">thBILL</span>
+                  
+                  {/* 描述 */}
+                  <p className="text-xs text-[#1a2332]/60 uppercase tracking-wider mb-6">
+                    Short Duration US Treasuries
+                  </p>
+                  
+                  {/* 收益率 */}
+                  <div className="text-6xl font-light text-[#1a2332] mb-3">4.3%</div>
+                  
+                  {/* 底部信息 */}
+                  <p className="text-xs text-[#1a2332]/60 uppercase leading-tight">
+                    Forward Yield (APR Last 7 Days)<br />
+                    As of Today, 25 Nov 2025
+                  </p>
                 </div>
-                <p className="text-xs text-[#1a2332]/60 uppercase tracking-wider mb-4">
-                  Short Duration US Treasuries
-                </p>
-                <div className="text-6xl font-light text-[#1a2332] mb-2">4.3%</div>
-                <p className="text-xs text-[#1a2332]/60 uppercase">
-                  Forward Yield (APR Last 7 Days)<br />
-                  As of Today, 25 Nov 2025
-                </p>
               </div>
             </div>
           </div>
