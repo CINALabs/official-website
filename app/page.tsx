@@ -277,52 +277,61 @@ export default function Home() {
       <section className="relative py-32 overflow-hidden">
         {/* 背景渐变 */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0e11] via-[#1a2550] to-[#0c0e11]">
-          {/* 主要Lottie动画背景 */}
-          <div className="absolute inset-0 opacity-15">
+          {/* 主要Lottie动画背景 - 完全填充容器 */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              opacity: 0.5,
+              mixBlendMode: 'screen'
+            }}
+          >
             <div 
               ref={containerRef}
               className="w-full h-full"
               style={{
                 position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                pointerEvents: 'none'
+                inset: 0,
+                pointerEvents: 'none',
+                transform: 'scale(1.5)'
               }}
             />
           </div>
           
-          {/* 装饰性几何元素 */}
-          <div className="absolute inset-0 opacity-10">
+          {/* 装饰性几何元素 - 增强效果 */}
+          <div className="absolute inset-0 opacity-30">
             {/* 圆形装饰 */}
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full border border-[#449fa5]/20 animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full border border-[#449fa5]/30 animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full border-2 border-[#918fff]/40 animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full border-2 border-[#918fff]/50 animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 right-1/3 w-32 h-32 rounded-full border-2 border-[#918fff]/30 animate-pulse" style={{animationDelay: '2s'}}></div>
             
-            {/* 线条装饰 */}
+            {/* 线条装饰 - 增加数量和效果 */}
             {matrixLines.map((line) => (
               <div
                 key={line.id}
-                className="absolute w-px bg-gradient-to-b from-transparent via-[#449fa5] to-transparent"
+                className="absolute w-1 bg-gradient-to-b from-transparent via-[#918fff]/70 to-transparent"
                 style={{
                   left: line.left,
                   height: line.height,
                   animation: `float ${line.duration} ease-in-out infinite`,
                   animationDelay: line.delay,
+                  boxShadow: '0 0 20px rgba(145, 143, 255, 0.4)',
+                  filter: 'blur(1px)'
                 }}
               />
             ))}
             
-            {/* 点装饰 */}
+            {/* 点装饰 - 增强效果 */}
             {matrixDots.map((dot) => (
               <div
                 key={dot.id}
-                className="absolute w-2 h-2 rounded-full bg-[#449fa5]"
+                className="absolute w-4 h-4 rounded-full bg-[#918fff]"
                 style={{
                   left: dot.left,
                   top: dot.top,
                   animation: `pulse ${dot.duration} ease-in-out infinite`,
                   animationDelay: dot.delay,
+                  boxShadow: '0 0 20px rgba(145, 143, 255, 0.6)',
+                  filter: 'blur(0.5px)'
                 }}
               />
             ))}
@@ -337,8 +346,8 @@ export default function Home() {
               </svg>
             </div>
             <h2 className="text-5xl font-light mb-6">
-              Built with <span className="text-[#449fa5]">security</span><br />
-              & trust in mind
+              Built with <span className="text-[#918fff]">security</span><br />
+              <span className="text-[#918fff]">& trust</span> in mind
             </h2>
             <p className="text-gray-400 mb-12 max-w-2xl mx-auto text-lg">
               We work with best-in-class partners to ensure the highest<br />
@@ -367,26 +376,26 @@ export default function Home() {
       {/* Announcement Card */}
       <section className="py-24 bg-[#0c0e11]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-br from-[#1a3a3a] to-[#0f2a2a] rounded-3xl p-12 relative overflow-hidden">
-            <div className="absolute right-0 top-0 w-1/2 h-full">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border-8 border-[#449fa5]/30" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-[#449fa5]/10 flex items-center justify-center">
-                <div className="w-48 h-48 rounded-full border-8 border-white flex items-center justify-center p-8">
-                  <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-                    <path d="M12 0C5.3826 0 0 5.38259 0 12C0 18.6174 5.3826 24 12 24C18.6174 24 24 18.6174 24 12C24 5.38259 18.6174 0 12 0ZM18.7324 19.0706C18.7159 19.087 18.5649 19.225 18.0197 19.1954C17.4746 19.1658 16.7159 18.9688 15.7767 18.5419C13.908 17.6979 11.6223 16.0887 9.41544 13.8851C9.21183 13.6814 9.02135 13.4811 8.82759 13.2775L8.77504 13.2151H16.4893L16.5353 13.2775C17.5895 14.7685 18.2989 16.1445 18.6338 17.2479C19.0542 18.6207 18.7652 19.0345 18.7291 19.0706H18.7324ZM4.73892 19.3695C4.70279 19.3333 4.41379 18.9195 4.83416 17.5468C5.17241 16.4433 5.87849 15.0673 6.93268 13.5764H7.0312C7.44499 14.0427 7.87521 14.509 8.33498 14.9688C9.10345 15.7373 9.88834 16.4401 10.6667 17.0739C9.61248 17.8325 8.60099 18.4302 7.6913 18.844C6.75206 19.2677 5.99343 19.4647 5.44828 19.4975C4.90312 19.5271 4.75206 19.3892 4.73563 19.3727L4.73892 19.3695ZM4.73892 5.37931C4.75534 5.36289 4.90641 5.22496 5.45156 5.25452C5.99672 5.28407 6.75534 5.48112 7.69458 5.90805C8.52874 6.28571 9.44828 6.82102 10.4039 7.48768C9.9179 7.91461 9.43186 8.36782 8.95238 8.84729C8.20361 9.59606 7.51724 10.358 6.89655 11.1199C5.86207 9.6486 5.16585 8.29228 4.83416 7.20197C4.41379 5.82923 4.70279 5.41543 4.73892 5.37931ZM16.2824 11.6864H8.41051C8.90969 11.0985 9.44828 10.5123 10.0296 9.92775C12.2332 7.72414 14.5222 6.11494 16.3908 5.27094C17.33 4.84729 18.0887 4.65025 18.6338 4.61741C19.179 4.58785 19.3301 4.72578 19.3465 4.7422C19.3629 4.75862 19.4647 4.867 19.4745 5.25452C19.4844 5.65189 19.3859 6.22332 19.1166 6.96552C18.6305 8.30542 17.665 9.95895 16.2824 11.6864ZM17.688 3.21839C15.9934 3.58949 13.8292 4.73563 11.6158 6.47619C9.33334 4.82759 7.16585 3.84236 5.57964 3.73727C7.35304 2.35796 9.57964 1.53038 11.9967 1.53038C14.0952 1.53038 16.046 2.15107 17.688 3.21839ZM3.11659 6.46305C3.30049 8.05255 4.29885 10.1642 5.9179 12.3777C4.49261 14.3251 3.5468 16.197 3.21511 17.7012C2.14778 16.0591 1.52381 14.1051 1.52381 12.0066C1.52381 9.90805 2.10838 8.07225 3.11659 6.46305ZM6.44664 20.8801C7.99672 20.5287 9.93104 19.5369 11.9343 18.0427C14.1478 19.6289 16.2496 20.5846 17.8095 20.7126C16.1445 21.8259 14.1445 22.4795 11.9967 22.4795C9.95731 22.4795 8.05583 21.8916 6.44664 20.8801ZM20.3777 18.2824C20.2923 16.7225 19.3399 14.5813 17.7274 12.3218C19.3925 10.1741 20.4926 8.08539 20.8604 6.4335C21.8785 8.04926 22.4729 9.95731 22.4729 12.0033C22.4729 14.3547 21.6946 16.5287 20.3777 18.2791V18.2824Z" fill="white"/>
-                  </svg>
-                </div>
-              </div>
+          <div className="bg-gradient-to-br from-[#0d2d2d] via-[#0a2525] to-[#082020] rounded-3xl p-16 relative overflow-hidden min-h-[500px] flex items-center">
+            {/* 右侧图片 - announce1.avif */}
+            <div className="absolute right-8 top-1/2 -translate-y-1/2 w-[450px] h-[450px]">
+              <img 
+                src="/announce1.avif" 
+                alt="thBILL is LIVE"
+                className="w-full h-full object-contain"
+              />
             </div>
+
+            {/* 左侧内容 */}
             <div className="relative z-10 max-w-xl">
-              <h2 className="text-5xl font-light mb-6">
-                Announcing our $20M<br />
-                Raise
+              <h2 className="text-5xl md:text-6xl font-light mb-6 leading-tight">
+                Announcing our<br />
+                $20M Raise
               </h2>
-              <p className="text-gray-300 mb-8 leading-relaxed">
+              <p className="text-gray-300 mb-8 leading-relaxed text-lg">
                 We've raised $20m led by Hack VC and Anthos Capital, with participation from Manifold Trading, Mirana Ventures, Metalayer Ventures, MEXC, SCB, Amber Group, and Selini Capital.
               </p>
-              <button className="px-6 py-3 border border-white rounded-full text-white hover:bg-white hover:text-[#1a3a3a] transition-all">
+              <button className="px-8 py-3 border-2 border-white/80 rounded-full text-white hover:bg-white hover:text-[#0a2525] transition-all font-light">
                 Read more
               </button>
             </div>
@@ -397,33 +406,40 @@ export default function Home() {
       {/* Blog Posts */}
       <section className="py-24 bg-[#0c0e11]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-[#1a2a3a] rounded-2xl overflow-hidden">
-              <div className="aspect-video bg-[#2a3a4a] relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-4xl font-light">thBILL</div>
-                </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Card 1 */}
+            <div className="bg-[#0d1a1a] rounded-3xl overflow-hidden hover:bg-[#0f1f1f] transition-colors cursor-pointer group">
+              <div className="aspect-video relative overflow-hidden">
+                <img 
+                  src="/announce2.avif" 
+                  alt="Theo Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-6">
-                <span className="text-xs text-gray-500 uppercase tracking-wider">Announcements</span>
-                <h3 className="text-xl font-light mt-2 mb-3">
+              <div className="p-8">
+                <span className="text-xs text-[#86b8b8] uppercase tracking-wider font-medium">Announcements</span>
+                <h3 className="text-2xl font-light mt-3 mb-4 group-hover:text-[#86b8b8] transition-colors">
                   Theo 推出机构级代币化货币市场基金 thBILL
                 </h3>
-                <p className="text-sm text-gray-500">JUL 24, 2025 · 3 MINUTES</p>
+                <p className="text-sm text-gray-500 uppercase tracking-wide">JUL 24, 2025 · 3 MINUTES</p>
               </div>
             </div>
-            <div className="bg-[#1a2a3a] rounded-2xl overflow-hidden">
-              <div className="aspect-video bg-[#2a3a4a] relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-4xl font-light">thBILL</div>
-                </div>
+
+            {/* Card 2 */}
+            <div className="bg-[#0d1a1a] rounded-3xl overflow-hidden hover:bg-[#0f1f1f] transition-colors cursor-pointer group">
+              <div className="aspect-video relative overflow-hidden">
+                <img 
+                  src="/announce2.avif" 
+                  alt="Theo Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-6">
-                <span className="text-xs text-gray-500 uppercase tracking-wider">Announcements</span>
-                <h3 className="text-xl font-light mt-2 mb-3">
-                  thBILL is Live: Theo's Institutional-Grade Tokenized Money Market ...
+              <div className="p-8">
+                <span className="text-xs text-[#86b8b8] uppercase tracking-wider font-medium">Announcements</span>
+                <h3 className="text-2xl font-light mt-3 mb-4 group-hover:text-[#86b8b8] transition-colors">
+                  thBILL is Live: Theo's Institutional-Grade Tokenize...
                 </h3>
-                <p className="text-sm text-gray-500">JUL 24, 2025 · 3 MINUTES</p>
+                <p className="text-sm text-gray-500 uppercase tracking-wide">JUL 24, 2025 · 3 MINUTES</p>
               </div>
             </div>
           </div>
@@ -433,9 +449,9 @@ export default function Home() {
       {/* Stay Up To Date */}
       <section className="py-16 bg-[#0c0e11]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-r from-[#1a4a4a] to-[#2a5a5a] rounded-2xl p-8 flex items-center justify-between">
-            <h3 className="text-3xl font-light">Stay up to date</h3>
-            <button className="px-8 py-3 bg-white text-[#1a4a4a] rounded-full font-medium hover:bg-gray-100 transition-colors">
+          <div className="bg-gradient-to-r from-[#1a4545] via-[#1d4a4a] to-[#205050] rounded-3xl p-10 flex items-center justify-between shadow-xl">
+            <h3 className="text-4xl font-light">Stay up to date</h3>
+            <button className="px-10 py-4 bg-white text-[#0d2525] rounded-full font-light text-lg hover:bg-gray-100 transition-all hover:scale-105">
               Follow Us On X
             </button>
           </div>
