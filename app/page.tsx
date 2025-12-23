@@ -200,7 +200,6 @@ export default function Home() {
           >
             <source src="/home.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a2332]/60 via-[#1a2332]/70 to-[#0c0e11]" />
         </div>
 
         <div className="relative z-10 max-w-[944px] mx-auto px-6 text-left w-full">
