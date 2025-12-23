@@ -166,10 +166,8 @@ export default function Home() {
 
           {/* Cards Grid */}
           <LottieCard
-            badge="For Issuers"
-            title="Complete ecosystems for tokenized assets"
-            description="Tap into onchain markets with an institutional-grade tokenization stack that goes beyond issuance. Theo powers financial products with built-in distribution, liquidity, and interoperability."
-            animationPath="/iAtwaAlMxMiMYxB3HyEPbkDjx0.json"
+            switchable={true}
+            className="mb-8"
           />
         </div>
       </section>
