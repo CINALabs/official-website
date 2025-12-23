@@ -1,16 +1,58 @@
 'use client';
 
 import { X } from "lucide-react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import LottieCard from "./components/LottieCard";
 
 export default function Home() {
   const [showNotification, setShowNotification] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<any>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Lottie动画加载
+  useEffect(() => {
+    if (!mounted || typeof window === 'undefined') return;
+
+    const loadAnimation = async () => {
+      if (!(window as any).lottie) {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
+        await new Promise((resolve, reject) => {
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+
+      if (containerRef.current && (window as any).lottie) {
+        // 清除之前的动画
+        if (animationRef.current) {
+          animationRef.current.destroy();
+        }
+        
+        animationRef.current = (window as any).lottie.loadAnimation({
+          container: containerRef.current,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: '/sxp5vYoSaPggBtOydnITFu0QUSw.json', // 使用一个安全相关的动画
+        });
+      }
+    };
+
+    loadAnimation().catch(console.error);
+
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.destroy();
+      }
+    };
+  }, [mounted]);
 
   // Generate random positions only on client side
   const matrixLines = useMemo(() => {
@@ -233,9 +275,31 @@ export default function Home() {
 
       {/* Security Section */}
       <section className="relative py-32 overflow-hidden">
+        {/* 背景渐变 */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0e11] via-[#1a2550] to-[#0c0e11]">
-          {/* Matrix animation background */}
-          <div className="absolute inset-0 opacity-30">
+          {/* 主要Lottie动画背景 */}
+          <div className="absolute inset-0 opacity-15">
+            <div 
+              ref={containerRef}
+              className="w-full h-full"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                pointerEvents: 'none'
+              }}
+            />
+          </div>
+          
+          {/* 装饰性几何元素 */}
+          <div className="absolute inset-0 opacity-10">
+            {/* 圆形装饰 */}
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full border border-[#449fa5]/20 animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full border border-[#449fa5]/30 animate-pulse" style={{animationDelay: '1s'}}></div>
+            
+            {/* 线条装饰 */}
             {matrixLines.map((line) => (
               <div
                 key={line.id}
@@ -248,6 +312,8 @@ export default function Home() {
                 }}
               />
             ))}
+            
+            {/* 点装饰 */}
             {matrixDots.map((dot) => (
               <div
                 key={dot.id}
@@ -263,21 +329,24 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className="w-16 h-16 mx-auto mb-8 rounded-full border-2 border-white/30 flex items-center justify-center">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="w-16 h-16 mx-auto mb-8 rounded-full border-2 border-white/30 flex items-center justify-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h2 className="text-5xl font-light mb-6">
+              Built with <span className="text-[#449fa5]">security</span><br />
+              & trust in mind
+            </h2>
+            <p className="text-gray-400 mb-12 max-w-2xl mx-auto text-lg">
+              We work with best-in-class partners to ensure the highest<br />
+              standard of security.
+            </p>
           </div>
-          <h2 className="text-5xl font-light mb-4">
-            Built with <span className="text-[#449fa5]">security</span><br />
-            & trust in mind
-          </h2>
-          <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
-            We work with best-in-class partners to ensure the highest<br />
-            standard of security.
-          </p>
-          <div className="space-y-8">
+          
+          <div className="space-y-12">
             <div>
               <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">AUDITED BY</p>
               <div className="flex justify-center gap-12 opacity-70">
