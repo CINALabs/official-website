@@ -113,21 +113,21 @@ export default function LottieCard({
 
   return (
     <div className={`relative rounded-[10px] overflow-hidden bg-[#181818] ${className}`}>
-      <div className="relative min-h-[400px] md:min-h-[500px] flex items-center">
+      <div className="relative min-h-[500px] md:min-h-[500px] flex items-center">
         {/* 左侧内容区域 */}
-        <div className="relative z-10 p-8 md:p-12 max-w-[50%]">
+        <div className="relative z-10 p-6 md:p-12 max-w-full md:max-w-[50%]">
           {/* 徽章 */}
-          <div className="inline-flex items-center justify-center px-3 py-1 rounded mb-6 bg-[#60787c]">
-            <p className="text-sm text-center text-white m-0">{currentContent.badge}</p>
+          <div className="inline-flex items-center justify-center px-3 py-1 rounded mb-4 md:mb-6 bg-[#60787c]">
+            <p className="text-xs md:text-sm text-center text-white m-0">{currentContent.badge}</p>
           </div>
           
           {/* 标题 */}
-          <h3 className="text-3xl md:text-4xl font-light mb-4 text-white leading-tight">
+          <h3 className="text-xl md:text-3xl lg:text-4xl font-light mb-3 md:mb-4 text-white leading-tight">
             {currentContent.title}
           </h3>
           
           {/* 描述 */}
-          <p className="text-[#d6d6d6] leading-relaxed text-base mb-6">
+          <p className="text-[#d6d6d6] leading-relaxed text-sm md:text-base mb-6 max-w-md">
             {currentContent.description}
           </p>
 
@@ -138,7 +138,7 @@ export default function LottieCard({
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
                       ? 'bg-white' 
                       : 'bg-white/30 hover:bg-white/50'
@@ -153,9 +153,9 @@ export default function LottieCard({
         {/* 右侧 Lottie 动画 */}
         {currentContent.animationPath && (
           <div 
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-[450px] h-[450px] md:w-[550px] md:h-[550px] pointer-events-none"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] pointer-events-none"
             style={{ 
-              opacity: 0.6
+              opacity: 0.4
             }}
           >
             <div 

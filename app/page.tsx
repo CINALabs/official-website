@@ -117,7 +117,7 @@ export default function Home() {
             </div>
             <div className="hidden md:flex items-center gap-2">
               <div 
-                className="relative" 
+                className="relative hidden md:block" 
                 ref={dropdownRef}
                 onMouseEnter={() => setShowAboutDropdown(true)}
                 onMouseLeave={() => setShowAboutDropdown(false)}
@@ -193,7 +193,7 @@ export default function Home() {
                 )}
               </div>
               <div 
-                className="relative" 
+                className="relative hidden md:block" 
                 ref={learnDropdownRef}
                 onMouseEnter={() => setShowLearnDropdown(true)}
                 onMouseLeave={() => setShowLearnDropdown(false)}
@@ -257,7 +257,7 @@ export default function Home() {
                 )}
               </div>
               <div 
-                className="relative" 
+                className="relative hidden md:block" 
                 ref={productsDropdownRef}
                 onMouseEnter={() => setShowProductsDropdown(true)}
                 onMouseLeave={() => setShowProductsDropdown(false)}
@@ -290,14 +290,12 @@ export default function Home() {
                 </div>
                 )}
               </div>
-              <button className="px-4 md:px-6 py-2 md:py-2.5 bg-white text-black rounded-full text-xs md:text-sm font-normal hover:bg-gray-100 transition-colors backdrop-blur-[10px] ml-2">
+              <button className="hidden md:block px-4 md:px-6 py-2 md:py-2.5 bg-white text-black rounded-full text-xs md:text-sm font-normal hover:bg-gray-100 transition-colors backdrop-blur-[10px] ml-2">
                 Launch app
               </button>
             </div>
             {/* Mobile menu button - visible only on mobile */}
             <div className="md:hidden flex items-center gap-2">
-              <button className="px-3 py-1.5 text-xs text-white opacity-95">About</button>
-              <button className="px-3 py-1.5 text-xs text-white opacity-95">Learn</button>
               <button className="px-4 py-2 bg-white text-black rounded-full text-xs font-normal hover:bg-gray-100 transition-colors">
                 Launch app
               </button>
@@ -320,23 +318,20 @@ export default function Home() {
           </video>
         </div>
 
-        <div className="relative z-10 max-w-[944px] mx-auto px-4 md:px-6 text-left w-full">
-          <div className="max-w-2xl flex flex-col gap-6 md:gap-8">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight">
+        <div className="relative z-10 max-w-[944px] mx-auto px-6 md:px-6 text-left w-full">
+          <div className="max-w-2xl flex flex-col gap-5 md:gap-8">
+            <h1 className="text-[2.5rem] md:text-6xl lg:text-7xl font-light leading-[1.1] md:leading-tight">
               Reimagining<br />
               Global Markets
             </h1>
-            <p className="text-sm md:text-lg text-white leading-relaxed max-w-xl">
-              Theo is a full-stack platform connecting onchain capital to
-              <span className="hidden md:inline"><br /></span>
-              <span className="md:hidden"> </span>
-              global financial markets.
+            <p className="text-[15px] md:text-lg text-white leading-relaxed max-w-xl">
+              Theo is a full-stack platform connecting onchain capital to global financial markets.
             </p>
             <div className="flex flex-col md:flex-row gap-3 md:gap-4">
-              <button className="px-5 md:px-6 py-2.5 md:py-3 bg-white/10 backdrop-blur-[9px] text-white text-sm md:text-base rounded-full hover:bg-white/20 transition-colors">
+              <button className="px-6 md:px-6 py-2.5 md:py-3 bg-white/10 backdrop-blur-[9px] text-white text-[15px] md:text-base rounded-full hover:bg-white/20 transition-colors">
                 Explore Theo
               </button>
-              <button className="px-5 md:px-6 py-2.5 md:py-3 text-white text-sm md:text-base flex items-center justify-center gap-2 hover:text-gray-300 transition-colors bg-transparent rounded-full">
+              <button className="px-6 md:px-6 py-2.5 md:py-3 text-white text-[15px] md:text-base flex items-center justify-center gap-2 hover:text-gray-300 transition-colors bg-transparent rounded-full border border-transparent hover:border-white/20">
                 Get in Touch
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -348,22 +343,22 @@ export default function Home() {
 
         {/* Notification Banner */}
         {!showNotification && (
-          <div className="absolute bottom-4 md:bottom-8 left-4 right-4 md:left-auto md:right-8 z-20 bg-white/10 backdrop-blur-[4px] rounded-lg p-3 pl-3 pr-2.5 pt-3 pb-0.5 max-w-[464px] md:ml-auto shadow-[0px_4px_8px_0px_rgba(0,0,0,0.1)]">
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-sm md:text-[15px] text-white font-normal">Announcing our $20M Raise</p>
+          <div className="absolute bottom-6 md:bottom-8 left-6 right-6 md:left-auto md:right-8 z-20 bg-[#1a1a1a]/90 backdrop-blur-[8px] rounded-lg p-4 max-w-[464px] md:ml-auto shadow-[0px_4px_12px_0px_rgba(0,0,0,0.3)] border border-white/10">
+            <div className="flex items-start justify-between mb-2">
+              <p className="text-[15px] md:text-[15px] text-white font-normal pr-2">Announcing our $20M Raise</p>
               <button
                 onClick={() => setShowNotification(true)}
-                className="text-white hover:text-gray-300 ml-4"
+                className="text-white hover:text-gray-300 flex-shrink-0"
               >
-                <X size={18} className="md:w-5 md:h-5" />
+                <X size={20} />
               </button>
             </div>
             <a 
               href="#" 
-              className="flex items-center gap-2 text-white hover:text-gray-200 transition-colors opacity-90 pb-2"
+              className="flex items-center gap-2 text-white hover:text-gray-200 transition-colors"
             >
-              <span className="text-sm md:text-[15px]">Read More</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="md:w-4 md:h-4">
+              <span className="text-[15px]">Read More</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
@@ -399,24 +394,18 @@ export default function Home() {
       </section>
 
       {/* What is Theo Section */}
-      <section className="py-16 md:py-24 bg-[#0c0e11]">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="flex items-center gap-4 mb-6 md:mb-8">
+      <section className="py-12 md:py-24 bg-[#0c0e11]">
+        <div className="max-w-7xl mx-auto px-6 md:px-6">
+          <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
             <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#449fa5]" />
             <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-600" />
             <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-600" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-light mb-4 md:mb-6">
-            Tokenization infrastructure that goes
-            <span className="hidden md:inline"><br /></span>
-            <span className="md:hidden"> </span>
-            beyond issuance
+          <h2 className="text-2xl md:text-5xl font-light mb-4 md:mb-6 leading-tight">
+            Tokenization infrastructure that goes beyond issuance
           </h2>
-          <p className="text-base md:text-xl text-gray-400 mb-12 md:mb-16">
-            Successful real world assets can't stop at issuance.
-            <span className="hidden md:inline"><br /></span>
-            <span className="md:hidden"> </span>
-            Theo helps issuers and allocators realize their potential.
+          <p className="text-sm md:text-xl text-gray-400 mb-10 md:mb-16 leading-relaxed">
+            Successful real world assets can't stop at issuance. Theo helps issuers and allocators realize their potential.
           </p>
 
           {/* Cards Grid */}
@@ -428,23 +417,20 @@ export default function Home() {
       </section>
 
       {/* thBILL Section */}
-      <section className="py-16 md:py-24 bg-[#0c0e11]">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section className="py-12 md:py-24 bg-[#0c0e11]">
+        <div className="max-w-7xl mx-auto px-6 md:px-6">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 max-w-4xl mx-auto">
             {/* 左侧内容 */}
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-light mb-4 md:mb-6 leading-tight">
-                The safest way to
-                <span className="hidden md:inline"><br /></span>
-                <span className="md:hidden"> </span>
-                earn onchain
+            <div className="flex-1 text-center md:text-left w-full">
+              <h2 className="text-2xl md:text-5xl lg:text-6xl font-light mb-4 md:mb-6 leading-tight">
+                The safest way to earn onchain
               </h2>
               <p className="text-sm md:text-base text-gray-400 mb-6 md:mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
                 thBILL is a tokenized T-bill vehicle developed in collaboration with leading financial institutions and the safest way to access Treasury yield onchain.
               </p>
               <div className="mb-6">
                 <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">BEST IN CLASS PARTNERS</p>
-                <div className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 opacity-60">
+                <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-6 opacity-60">
                   <div className="text-xs md:text-sm">Standard Chartered</div>
                   <div className="text-xs md:text-sm">Wellington Management</div>
                   <div className="text-xs md:text-sm">Fundbridge</div>
@@ -453,8 +439,8 @@ export default function Home() {
             </div>
 
             {/* 右侧卡片 */}
-            <div className="flex-shrink-0">
-              <div className="bg-gradient-to-br from-[#c8d8d8] to-[#88b8c8] rounded-3xl p-6 md:p-8 w-64 h-64 md:w-80 md:h-80 flex flex-col items-center justify-center relative overflow-hidden">
+            <div className="flex-shrink-0 w-full md:w-auto flex justify-center">
+              <div className="bg-gradient-to-br from-[#c8d8d8] to-[#88b8c8] rounded-3xl p-6 md:p-8 w-full max-w-[280px] md:max-w-none md:w-80 aspect-square flex flex-col items-center justify-center relative overflow-hidden">
                 {/* 背景装饰 */}
                 <div className="absolute top-2 right-2 md:top-4 md:right-4 w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-[#1a2332]/20"></div>
                 <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#1a2332]/10"></div>
@@ -593,14 +579,14 @@ export default function Home() {
       </section>
 
       {/* Announcement Card */}
-      <section className="py-8 md:py-12 bg-[#0c0e11]">
-        <div className="max-w-[1024px] mx-auto px-4 md:px-6">
+      <section className="py-6 md:py-12 bg-[#0c0e11]">
+        <div className="max-w-[1024px] mx-auto px-6 md:px-6">
           <div 
-            className="bg-[#01161b] rounded-[10px] p-6 md:p-8 lg:p-10 relative overflow-hidden border border-black flex flex-col justify-between min-h-[300px] md:min-h-0"
-            style={{ aspectRatio: 'auto', '@media (min-width: 768px)': { aspectRatio: '2.53083' } }}
+            className="bg-[#01161b] rounded-[10px] p-6 md:p-8 lg:p-10 relative overflow-hidden border border-black flex flex-col justify-between min-h-[280px] md:min-h-0"
+            style={{ aspectRatio: 'auto' }}
           >
             {/* 右侧背景图片 */}
-            <div className="absolute top-0 right-0 bottom-0 left-0 pointer-events-none">
+            <div className="absolute top-0 right-0 bottom-0 left-0 pointer-events-none opacity-30 md:opacity-100">
               <img 
                 src="/announce1.avif" 
                 alt=""
@@ -611,15 +597,15 @@ export default function Home() {
             {/* 内容区域 */}
             <div className="relative z-10 flex flex-col justify-between h-full">
               {/* 标题和描述 */}
-              <div className="flex flex-col gap-4 md:gap-6 max-w-full md:max-w-[480px]">
-                <h2 className="text-2xl md:text-4xl lg:text-[44px] font-light leading-[1.2] text-white">
+              <div className="flex flex-col gap-3 md:gap-6 max-w-full md:max-w-[480px]">
+                <h2 className="text-xl md:text-4xl lg:text-[44px] font-light leading-[1.2] text-white">
                   Announcing our $20M Raise
                 </h2>
-                <div className="flex flex-col gap-3 md:gap-4">
-                  <p className="text-white/90 leading-relaxed text-sm md:text-[15px] lg:text-base">
+                <div className="flex flex-col gap-2 md:gap-4">
+                  <p className="text-white/90 leading-relaxed text-xs md:text-[15px] lg:text-base hidden md:block">
                     We've raised $20m led by Hack VC and Anthos Capital, with participation from Manifold Trading, Mirana Ventures, Metalayer Ventures, MEXC, SCB, Amber Group, and Selini Capital.
                   </p>
-                  <button className="self-start px-5 md:px-7 py-2 md:py-2.5 border-[0.8px] border-white rounded-full text-white text-xs md:text-sm hover:bg-white/10 transition-all font-normal backdrop-blur-[20px] bg-transparent">
+                  <button className="self-start px-4 md:px-7 py-1.5 md:py-2.5 border-[0.8px] border-white rounded-full text-white text-xs md:text-sm hover:bg-white/10 transition-all font-normal backdrop-blur-[20px] bg-transparent">
                     Read more
                   </button>
                 </div>
@@ -630,25 +616,25 @@ export default function Home() {
       </section>
 
       {/* Blog Posts */}
-      <section className="py-8 md:py-12 bg-[#0c0e11]">
+      <section className="py-6 md:py-12 bg-[#0c0e11]">
         <div className="max-w-[1024px] mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {/* Card 1 */}
-            <a href="#" className="block bg-[#202020] rounded-[10px] overflow-hidden hover:opacity-90 transition-opacity cursor-pointer flex flex-col gap-4 md:gap-6">
-              <div className="aspect-video relative overflow-hidden">
+            <a href="#" className="block bg-[#202020] rounded-[10px] overflow-hidden hover:opacity-90 transition-opacity cursor-pointer flex flex-col">
+              <div className="aspect-video relative overflow-hidden hidden md:block">
                 <img 
                   src="/announce2.avif" 
                   alt="thBILL is LIVE"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="px-4 md:px-6 pb-4 md:pb-6 flex flex-col gap-4 md:gap-6">
+              <div className="px-4 md:px-6 py-4 md:pb-6 flex flex-col gap-3 md:gap-6">
                 <div className="flex flex-col gap-2 md:gap-3">
                   <div className="inline-block self-start px-2 md:px-3 py-0.5 md:py-1 bg-[#002b31] rounded-md">
                     <span className="text-[10px] md:text-[11px] text-white uppercase tracking-wider font-normal">Announcements</span>
                   </div>
-                  <h3 className="text-lg md:text-2xl font-normal text-white leading-tight line-clamp-2">
-                    Theo 推出机构级代币化货币市场基金 thBILL
+                  <h3 className="text-base md:text-2xl font-normal text-white leading-tight line-clamp-2">
+                    thBILL is Live: Theo's Institutional-Grade Tokenized Money Market Fund
                   </h3>
                 </div>
                 <div className="flex items-center gap-2 text-[10px] md:text-[11px] text-[#5f5f5f] uppercase tracking-wide">
@@ -659,8 +645,8 @@ export default function Home() {
               </div>
             </a>
 
-            {/* Card 2 */}
-            <a href="#" className="block bg-[#202020] rounded-[10px] overflow-hidden hover:opacity-90 transition-opacity cursor-pointer flex flex-col gap-4 md:gap-6">
+            {/* Card 2 - Hidden on mobile */}
+            <a href="#" className="hidden md:flex bg-[#202020] rounded-[10px] overflow-hidden hover:opacity-90 transition-opacity cursor-pointer flex-col gap-6">
               <div className="aspect-video relative overflow-hidden">
                 <img 
                   src="/announce2.avif" 
@@ -668,16 +654,16 @@ export default function Home() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="px-4 md:px-6 pb-4 md:pb-6 flex flex-col gap-4 md:gap-6">
-                <div className="flex flex-col gap-2 md:gap-3">
-                  <div className="inline-block self-start px-2 md:px-3 py-0.5 md:py-1 bg-[#002b31] rounded-md">
-                    <span className="text-[10px] md:text-[11px] text-white uppercase tracking-wider font-normal">Announcements</span>
+              <div className="px-6 pb-6 flex flex-col gap-6">
+                <div className="flex flex-col gap-3">
+                  <div className="inline-block self-start px-3 py-1 bg-[#002b31] rounded-md">
+                    <span className="text-[11px] text-white uppercase tracking-wider font-normal">Announcements</span>
                   </div>
-                  <h3 className="text-lg md:text-2xl font-normal text-white leading-tight line-clamp-2">
+                  <h3 className="text-2xl font-normal text-white leading-tight line-clamp-2">
                     thBILL is Live: Theo's Institutional-Grade Tokenized Money Market Fund
                   </h3>
                 </div>
-                <div className="flex items-center gap-2 text-[10px] md:text-[11px] text-[#5f5f5f] uppercase tracking-wide">
+                <div className="flex items-center gap-2 text-[11px] text-[#5f5f5f] uppercase tracking-wide">
                   <span>JUL 24, 2025</span>
                   <span>·</span>
                   <span>3 MINUTES</span>
@@ -701,12 +687,12 @@ export default function Home() {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-12 md:py-16 bg-[#0c0e11]">
-        <div className="max-w-[1024px] mx-auto px-4 md:px-16">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
+      <section className="py-10 md:py-16 bg-[#0c0e11]">
+        <div className="max-w-[1024px] mx-auto px-6 md:px-16">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-8">
             {/* Left: Need more information */}
             <div className="flex flex-col gap-4 md:gap-6 w-full md:w-auto">
-              <h2 className="text-3xl md:text-4xl lg:text-[44px] font-light leading-[1.2] text-white">
+              <h2 className="text-2xl md:text-4xl lg:text-[44px] font-light leading-[1.2] text-white">
                 Need<br />
                 more information?
               </h2>
@@ -716,10 +702,10 @@ export default function Home() {
             </div>
 
             {/* Right: Footer Links */}
-            <div className="flex flex-row gap-12 md:gap-16">
+            <div className="flex flex-row gap-8 md:gap-16 w-full md:w-auto">
               {/* ABOUT */}
-              <div className="flex flex-col gap-3 md:gap-4">
-                <p className="text-xs text-[#5f5f5f] uppercase tracking-wider font-bold">ABOUT</p>
+              <div className="flex flex-col gap-3 md:gap-4 flex-1 md:flex-none">
+                <p className="text-[10px] md:text-xs text-[#5f5f5f] uppercase tracking-wider font-bold">ABOUT</p>
                 <div className="flex flex-col gap-2">
                   <a href="#" className="text-sm md:text-base text-white hover:text-gray-300 transition-colors">Contact Us</a>
                   <a href="#" className="text-sm md:text-base text-white hover:text-gray-300 transition-colors">Brand Kit</a>
@@ -728,8 +714,8 @@ export default function Home() {
               </div>
 
               {/* LEARN */}
-              <div className="flex flex-col gap-3 md:gap-4">
-                <p className="text-xs text-[#5f5f5f] uppercase tracking-wider font-bold">LEARN</p>
+              <div className="flex flex-col gap-3 md:gap-4 flex-1 md:flex-none">
+                <p className="text-[10px] md:text-xs text-[#5f5f5f] uppercase tracking-wider font-bold">LEARN</p>
                 <div className="flex flex-col gap-2">
                   <a href="#" className="text-sm md:text-base text-[#d6d6d6] hover:text-white transition-colors">Vision</a>
                   <a href="#" className="text-sm md:text-base text-[#d6d6d6] hover:text-white transition-colors">Blog</a>
@@ -740,8 +726,8 @@ export default function Home() {
           </div>
 
           {/* SOCIALS */}
-          <div className="mt-12 md:mt-16 bg-transparent rounded-[10px] flex flex-col gap-3 md:gap-4">
-            <p className="text-xs text-[#5f5f5f] uppercase tracking-wider font-normal">SOCIALS</p>
+          <div className="mt-8 md:mt-16 bg-transparent rounded-[10px] flex flex-col gap-3 md:gap-4">
+            <p className="text-[10px] md:text-xs text-[#5f5f5f] uppercase tracking-wider font-normal">SOCIALS</p>
             <div className="flex gap-3 md:gap-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors opacity-70">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="md:w-6 md:h-6">
